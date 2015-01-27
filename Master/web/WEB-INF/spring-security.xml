@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns:security="http://www.springframework.org/schema/security"
+        xmlns:beans="http://www.springframework.org/schema/beans" 
+        xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+			http://www.springframework.org/schema/security 
+			http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+
+    <!-- Aktiviert Security Annotationen  -->
+    <security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled" />
+
+    <security:http auto-config="true" use-expressions="true" access-denied-page="/zugriff-verweigert" >
+        <security:form-login 
+            login-processing-url="/j_spring_security_check"
+            login-page="/login"
+            authentication-failure-url="/login?login_error=true" />
+        <security:logout logout-url="/logout" logout-success-url="/"/>
+        <security:remember-me key="myAppKey" token-validity-seconds="864000" />
+    </security:http>
+
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service data-source-ref="dataSource"
+					   users-by-username-query="select EMail, Passwort, Aktiviert from BENUTZER
+								    where EMail=?"
+
+					   authorities-by-username-query="select EMail, CASE 
+                                                WHEN Rolle = '0' THEN 'ROLE_ADMIN'
+                                                WHEN Rolle = '1' THEN 'ROLE_KOORD'
+                                                WHEN Rolle = '2' THEN 'ROLE_SPENDER'
+                                                WHEN Rolle = '3' THEN 'ROLE_TAFEL'
+                                                END from BENUTZER where EMail=?"
+			/>
+                        <security:password-encoder ref="passwordEncoder"/>
+		</security:authentication-provider>
+	</security:authentication-manager>
+        
+    <!-- Bindet einen MD5 Encoder ein, denn die Passwörter sind in der Datenbank als MD5 Hash gespeichert. -->
+    <bean class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" id="passwordEncoder"/>
+
+
+</beans>

@@ -1,0 +1,56 @@
+header {
+	background-color: $orange; // Old browsers
+	@include filter-gradient($orange, #ec7d1d, vertical); // IE6-9
+	@include background-image(linear-gradient(top, $orange 0%,#ec7d1d 100%));
+	height:em(75);
+	padding:em(10) em(25);
+	margin:0 0 em(25);
+	@include border-bottom-radius(em(5));
+	@include box-shadow(0 0 em(5) rgba(0,0,0,.25));
+	position:relative;
+	overflow:hidden;
+	h1 {
+		a {
+			display:block;
+			height:em(75);
+			width:em(217);
+			background:url('../img/logo.png') 0 50% no-repeat;
+			text-indent: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+	}
+	nav {
+		ul {
+			padding:0;
+			margin:0;
+			list-style:none;
+			position:absolute;
+			bottom:em(8);
+			right:em(15);
+			line-height:1;
+		}
+		li {
+			float:left;
+			display:block;
+		}
+		a {
+			padding:em(6) em(10);
+			color:$white;
+			&:hover, &.active {
+				padding:em(6) em(10) em(3);
+				border-bottom:em(4) solid #fff;
+				text-decoration:none;
+			}
+		}
+	}
+}
+#usercenter {
+	background:$white;
+	position:absolute;
+	top:0;
+	right:0;
+	@include border-bottom-left-radius(em(5));
+	padding:em(5) em(25) em(5) em(15);
+	@include box-shadow(0 0 em(5) rgba(0,0,0,.25));
+}

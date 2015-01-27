@@ -1,0 +1,12 @@
+@function em($target, $context: 16) {
+    @return ($target / $context) * 1em;
+}
+$prefixes: ("-webkit-","-moz-", "-o-", "");
+@mixin selection($color, $background) {
+    @each $prefix in $prefixes {
+        :#{$prefix}selection {
+            color: $color;
+            background: $background;
+        }
+    }
+}

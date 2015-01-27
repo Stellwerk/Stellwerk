@@ -1,0 +1,290 @@
+.button {
+	@include border-radius(em(4));
+	margin:0 em(10) 0 0;
+	padding:em(5) em(15);
+	background:$orange;
+	border:0;
+	color:$white;
+	width:auto;
+	cursor:pointer;
+	height:em(31);
+	line-height:em(21);
+	text-decoration:none;
+	float:left;
+	position:relative;
+	z-index:2;
+	-webkit-appearance:none;
+	&:hover {
+		@include box-shadow(0 0 em(5) $darkergray);
+		text-decoration:underline;
+	}
+}
+a.button {
+	height:em(21);
+}
+.button.minor {
+	background:$darkergray;	
+}
+li {
+	list-style:none;
+}
+form li {
+	clear:both;
+}
+label {
+	font-size:em(16);
+	width:em(190);
+	display:block;
+	float:left;
+	line-height:em(28);
+	vertical-align:middle;
+}
+input.field, textarea {
+	font-size: em(20);
+	width:em(300,20);
+	height:em(24,20);
+	padding: em(3,20);
+	margin: 0 em(5,20) em(10,20) 0;
+	border: 1px solid $gray;
+	color: #555;
+	background: #fbfbfb;
+	outline: 0;
+	position:relative;
+	z-index:5;
+	overflow:visible;
+	float:left;
+	@include border-radius(em(4));
+	@include box-shadow(inset em(1,20) em(1,20) em(2,20) rgba(#C8C8C8,0.2));
+	&:focus {
+		border-color:$darkergray;
+	}
+	&:disabled, &[readonly="readonly"], &[readonly] {
+		@include opacity(0.6);
+	}
+	#login & {
+		width:em(250,20);
+	}
+}
+textarea {
+	width:em(700,20) !important;
+	height:em(100,20);
+	margin:0 0 em(5,20);
+	&.big {
+		height:em(400,20);
+	}
+}
+input.small1 { //z.B. für PLZ
+	width:em(90,20);
+	float:left;
+}
+input.small2 {
+	width:em(141,20);
+	float:left;
+}
+input.small3 { //z.B. für Ort
+	width:em(197,20);
+	float:left;
+}
+.select {
+	background:$orange url('../img/sprite1.png') 100% 0 no-repeat;
+	@include background-size(em(31) em(62));
+	@include border-radius(em(4));
+	overflow:hidden;
+	margin:0 0 em(10);
+	cursor:pointer;
+	display:inline-block;
+	float:left;
+	&:hover {
+		@include box-shadow(0 0 em(5) rgba(0,0,0,.25));		
+	}
+	&:focus {
+		background-position:100% em(-31);		
+	}
+	select {
+		background-color:transparent;
+		border:0;
+		height:em(32);
+		-webkit-appearance:none;
+		color:$white;
+		position:relative;
+		padding:em(5) em(50) em(5) em(10);
+		option {
+			color:#000;
+			background:$white;
+		}
+	}
+	.no-appearance & {
+		$width:150;
+		width:em($width);
+		select {
+			width:em($width+30);
+			padding:em(5) em(10);
+		}
+	}
+}
+#j_submit {
+	position:absolute;
+	right:em(25);
+	bottom:em(25);
+}
+.checkbox {
+	width:1em;
+	position:absolute;
+	bottom:em(25.5);
+	left:em(27);
+//	input {
+//		visibility: hidden;
+//	}
+	label {
+		cursor: pointer;
+		position: absolute;
+		width:1em !important;
+		height:1em;
+		text-indent:1.4em;
+		top: 2px;
+		left: -2px;
+		background: #fbfbfb;
+		@include border-radius(em(4));
+		@include box-shadow(inset em(1,20) em(1,20) em(2,20) rgba(#C8C8C8,0.2));
+		border:1px solid $gray;
+		&:after {
+			opacity: 0.2;
+			content: '';
+			position: absolute;
+			width:em(9);
+			height:em(5);
+			background: transparent;
+			top:em(3);
+			left:em(2);
+			border:em(3) solid #333;
+			border-top: none;
+			border-right: none;
+			@include rotate(-45deg);
+		}
+		&:hover:after {
+			opacity: 0.5;
+		}
+	}
+	input[type=checkbox]:checked + label:after {
+		opacity:1;
+	}
+}
+.info {
+	position:relative;
+	float:left;
+	dt {
+		font-size:em(20);
+		font-family: 'Tafelstellwerk-Icon-Font';
+		speak: none;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height:em(24,20);
+		-webkit-font-smoothing: antialiased;
+		cursor:pointer;
+		color:$darkergray;
+		padding:em(4,20);
+		&:hover, &:focus {
+			color:$orange;
+		}
+	}
+	&.active dt {
+		color:$orange;
+	}
+	dd {
+		display:none;
+		position:absolute;
+		z-index:20;
+		left:em(39);
+		top:em(1);
+		width:em(360);
+		background:$white;
+		@include box-shadow(0 0 .5em 0 $darkergray);
+		border-radius:.25em;
+		padding:em(5) em(10);
+		&:after {
+			$size:14;
+			@include box-shadow(em(-2) em(2) em(5) em(-2) $darkergray);
+			background:$white;
+			content:"\00a0";
+			display: block;
+			height: em($size);
+			width: em($size);
+			position: absolute;
+			@include transform(rotate(45deg));
+			top: em(($size/2));
+			left: em(-($size/2));
+			z-index: 1;
+		}
+	}
+	&.left dd{
+		right:em(39);
+		left:auto;
+		&:after {
+			$size:14;
+			@include box-shadow(em(2) em(-2) em(5) em(-2) $darkergray);
+			right: em(-($size/2));
+			left: auto;
+		}
+	}
+	&.check {
+		position: absolute;
+		bottom: em(25);
+		&.valid dt {
+			color: $darkergreen;
+		}
+		&.invalid dt {
+			color: $red;
+		}
+	}
+	&.active {
+		&.check dt {
+			color:$orange;
+		}
+	}
+}
+td .info.check {
+	position: relative;
+	bottom: 0;
+	font-size: 0.75em;
+	dt {
+		padding:0;
+		position: relative;
+		top:2px;
+	}
+	&.invalid dt {
+		color: $yellow;
+	}
+	dd {
+		top:em(-4);
+		font-size:1.25em;
+	}
+}
+// Verteilung
+#tafelauswahl {
+	#map {
+		margin:em(25) 0 em(20);
+		height:em(400);
+	}
+}
+// Spendenannahme
+
+.dialog {
+	display: none;
+	background: $white;
+	@include border-radius(em(5));
+	@include box-shadow(0 0 em(5) rgba(0,0,0,.25));
+	padding:1em;
+	label, input {
+		width: auto;
+		float:none;
+		line-height: 1em;
+	}
+	h4 {
+		margin:0;
+	}
+}
+button {
+	font-size:em(16)
+}

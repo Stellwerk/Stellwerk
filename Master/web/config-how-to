@@ -1,0 +1,9 @@
+Anpassungen an Datenbank sind in folgenden Dateine zu treffen:
+
+Source Packages/default package/hibernate.cfg.xml
+Web Pages/WEB-INF/applicationContext.xml
+
+Mailserver:
+Source Packages/default package/Spring-Mail.xml
+
+im StandardController ganz unten stehen 2 interessante dinge

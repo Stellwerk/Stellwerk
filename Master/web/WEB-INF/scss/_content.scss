@@ -1,0 +1,107 @@
+#content {
+	margin:em(25) 0;
+	padding:em(19) em(25) em(25);
+	background:$white;
+	@include border-radius(em(5));
+	@include box-shadow(0 0 em(5) rgba(0,0,0,.25));
+}
+#login {
+	@extend #content;
+	position:relative;
+	width:em(258);
+	padding:em(25) em(25) em(25+31);
+	margin:0 auto em(50);
+	.button {
+		float:right;
+		margin:0;
+	}
+	label {
+		width:auto;
+		line-height:1;
+	}
+}
+.fehler, .erfolg {
+	@include border-radius(em(5));
+	@include box-shadow(0 0 em(5) rgba(0,0,0,.25));
+	background: $lightergreen;
+	border:1px solid $darkergreen;
+	color:$darkergreen;
+	padding:em(15) em(25);
+	margin:0 auto em(25);
+	& > *:last-child {
+		margin-bottom:0;
+	}	
+}
+.fehler {
+	background: $lighterred;
+	border:1px solid $red;
+	color:$red;
+}
+.login.fehler {
+	@extend #login;
+	padding:em(25);
+	background: $lighterred;
+	margin:0 auto em(25);
+}
+.login.erfolg {
+	@extend #login;
+	padding:em(25);
+	background: $lightergreen;
+	margin:0 auto em(25);
+}
+#forgot_pw, #pw_key {
+	position:absolute;
+	bottom:em(-25);
+	left:em(25);
+}
+#pw_key {
+	bottom:em(-50);
+}
+.table {
+	table {
+		width:100%;
+	}
+	td {
+	}
+	thead td {
+		padding:.3em .3em 0 0;
+		border-bottom:1px solid $orange;
+		border-right:.5em solid $white;
+		color:$orange;
+		text-transform:uppercase;
+	}
+	tbody td {
+		padding:.3em;
+	}
+	.even {
+		background:lighten($orange,40%);
+	}
+	.checkbox {
+		width:em(13);
+		padding:.3em .3em 0;
+	}
+	td.small {
+		width:1em;
+	}
+}
+a.black {
+	color: #000;
+}
+.bold {
+	font-weight: 700;
+}
+.yellow {
+	color: $yellow;
+}
+#diagramm {
+	width:em(930);
+	height:em(500);
+}
+#content .highcharts-contextmenu {
+	hr {
+		background:$orange;
+		height:1px;
+		width:auto;
+		position: static;
+	}
+}
