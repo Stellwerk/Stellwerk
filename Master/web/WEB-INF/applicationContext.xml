@@ -17,6 +17,7 @@
 
     <!-- Aktiviert, dass Annotationen an Klassen erkannt werden -->
     <context:annotation-config />
+    <contect:csdcdscjcnd>
     
     <!-- Aktiviert das Tasl-Management von Spring -->
     <task:annotation-driven />
